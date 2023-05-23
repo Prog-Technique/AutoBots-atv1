@@ -4,10 +4,10 @@
 <h3> Sistema para gestão de lojas especializadas em manutenção veicular e vendas de autopeças </h3>
 
 <p>
-    <a href="#obj">Sobre</a> | 
+    <a href="#obj">Objetivo</a> | 
     <a href="#tec">Tecnologia</a> | 
     <a href="#diagramas">Diagramas</a> | 
-    <a href="#manual">Manual do usuário</a> |
+    <a href="#manual">Manual do usuário</a>
 </p>
 
 </div>
