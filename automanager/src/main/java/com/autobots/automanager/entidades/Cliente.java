@@ -26,7 +26,7 @@ public class Cliente {
 	@Column
 	private String nomeSocial;
 	@Column
-	private Date dataNascimento;
+	private String dataNascimento;
 	@Column
 	private Date dataCadastro;
 	@OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)

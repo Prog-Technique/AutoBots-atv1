@@ -1,5 +1,7 @@
 package com.autobots.automanager;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,12 +32,14 @@ public class AutomanagerApplication {
 		@Override
 		public void run(ApplicationArguments args) throws Exception {
 			Calendar calendario = Calendar.getInstance();
+			LocalDateTime dateTime = LocalDateTime.now();
+			DateTimeFormatter date = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 			calendario.set(2002, 05, 15);
 
 			Cliente cliente = new Cliente();
 			cliente.setNome("Pedro Alcântara de Bragança e Bourbon");
 			cliente.setDataCadastro(Calendar.getInstance().getTime());
-			cliente.setDataNascimento(calendario.getTime());
+			cliente.setDataNascimento(dateTime.format(date));
 			cliente.setNomeSocial("Dom Pedro");
 			
 			Telefone telefone = new Telefone();
