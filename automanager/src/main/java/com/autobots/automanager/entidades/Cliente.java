@@ -11,7 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+
 
 import lombok.Data;
 
@@ -26,13 +26,13 @@ public class Cliente {
 	@Column
 	private String nomeSocial;
 	@Column
-	private String dataNascimento;
+	private Date dataNascimento;
 	@Column
 	private Date dataCadastro;
 	@OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
 	private List<Documento> documentos = new ArrayList<>();
-	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-	private Endereco endereco;
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Endereco> endereco;
 	@OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
 	private List<Telefone> telefones = new ArrayList<>();
 

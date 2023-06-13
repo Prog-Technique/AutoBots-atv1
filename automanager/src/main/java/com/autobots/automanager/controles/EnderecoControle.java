@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.autobots.automanager.entidades.Cliente;
 import com.autobots.automanager.entidades.Endereco;
 import com.autobots.automanager.modelo.EnderecoAtualizador;
-import com.autobots.automanager.modelo.EnderecoSelecionador;
+import com.autobots.automanager.modelo.Selecionador;
+import com.autobots.automanager.repositorios.ClienteRepositorio;
 import com.autobots.automanager.repositorios.EnderecoRepositorio;
 
 @RestController
@@ -22,24 +24,30 @@ import com.autobots.automanager.repositorios.EnderecoRepositorio;
 public class EnderecoControle {
 	@Autowired
 	private EnderecoRepositorio repositorio;
+	
 	@Autowired
-	private EnderecoSelecionador selecionador;
+	private ClienteRepositorio ClienteRepositorio;
+
 
 	@GetMapping("/endereco/{id}")
 	public Endereco obterEndereco(@PathVariable long id) {
 		List<Endereco> enderecos = repositorio.findAll();
-		return selecionador.selecionar(enderecos, id);
+		return Selecionador.enderecoSelecionador(enderecos, id);
 	}
 
 	@GetMapping("/enderecos")
-	public List<Endereco> obterEnderecos() {
+	public List<Endereco> obterEndereco() {
 		List<Endereco> enderecos = repositorio.findAll();
 		return enderecos;
 	}
 
-	@PostMapping("/cadastro")
-	public void cadastrarEndereco(@RequestBody Endereco endereco) {
-		repositorio.save(endereco);
+	@PostMapping("/cadastro/{id}")
+	public void cadastrarEndereco(@RequestBody Endereco endereco, @PathVariable long id) {
+		Cliente cliente = ClienteRepositorio.getById(id);
+		List<Endereco> enderecos = cliente.getEndereco();
+		enderecos.add(endereco);
+		cliente.setEndereco(enderecos);
+		ClienteRepositorio.save(cliente);
 	}
 
 	@PutMapping("/atualizar")
@@ -50,9 +58,17 @@ public class EnderecoControle {
 		repositorio.save(endereco);
 	}
 
-	@DeleteMapping("/excluir")
-	public void excluirEndereco(@RequestBody Endereco exclusao) {
-		Endereco endereco = repositorio.getById(exclusao.getId());
-		repositorio.delete(endereco);
+	@DeleteMapping("/excluir/{id}")
+	public void excluirEndereco(@RequestBody Endereco exclusao, @PathVariable long id) {
+		Cliente cliente = ClienteRepositorio.getById(id);
+		List<Endereco> enderecos = cliente.getEndereco();
+		for (int i=0; i<enderecos.size(); i++) {
+			if (enderecos.get(i).getId() == exclusao.getId()) {
+				enderecos.remove(i);
+				break;
+			}
+		}
+		cliente.setEndereco(enderecos);
+		ClienteRepositorio.save(cliente);
 	}
 }

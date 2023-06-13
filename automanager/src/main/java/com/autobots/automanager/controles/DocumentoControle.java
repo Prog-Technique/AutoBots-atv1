@@ -12,23 +12,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.autobots.automanager.entidades.Cliente;
 import com.autobots.automanager.entidades.Documento;
 import com.autobots.automanager.modelo.DocumentoAtualizador;
-import com.autobots.automanager.modelo.DocumentoSelecionador;
+import com.autobots.automanager.modelo.Selecionador;
 import com.autobots.automanager.repositorios.DocumentoRepositorio;
+import com.autobots.automanager.repositorios.ClienteRepositorio;
 
 @RestController
 @RequestMapping("/documento")
 public class DocumentoControle {
 	@Autowired
 	private DocumentoRepositorio repositorio;
+	
 	@Autowired
-	private DocumentoSelecionador selecionador;
+	private ClienteRepositorio ClienteRepositorio;
 
 	@GetMapping("/documento/{id}")
 	public Documento obterDocumento(@PathVariable long id) {
 		List<Documento> documentos = repositorio.findAll();
-		return selecionador.selecionar(documentos, id);
+		return Selecionador.documentoSelecionador(documentos, id);
 	}
 
 	@GetMapping("/documentos")
@@ -37,9 +40,13 @@ public class DocumentoControle {
 		return documentos;
 	}
 
-	@PostMapping("/cadastro")
-	public void cadastrarDocumento(@RequestBody Documento documento) {
-		repositorio.save(documento);
+	@PostMapping("/cadastro/{id}")
+	public void cadastrarDocumento(@RequestBody Documento documento, @PathVariable long id) {
+		Cliente cliente = ClienteRepositorio.getById(id);
+		List<Documento> documentos = cliente.getDocumentos();
+		documentos.add(documento);
+		cliente.setDocumentos(documentos);
+		ClienteRepositorio.save(cliente);
 	}
 
 	@PutMapping("/atualizar")
@@ -50,9 +57,17 @@ public class DocumentoControle {
 		repositorio.save(documento);
 	}
 
-	@DeleteMapping("/excluir")
-	public void excluirDocumento(@RequestBody Documento exclusao) {
-		Documento documento = repositorio.getById(exclusao.getId());
-		repositorio.delete(documento);
+	@DeleteMapping("/excluir/{id}")
+	public void excluirDocumento(@RequestBody Documento exclusao, @PathVariable long id) {
+		Cliente cliente = ClienteRepositorio.getById(id);
+		List<Documento> documentos = cliente.getDocumentos();
+		for (int i=0; i<documentos.size(); i++) {
+			if (documentos.get(i).getId() == exclusao.getId()) {
+				documentos.remove(i);
+				break;
+			}
+		}
+		cliente.setDocumentos(documentos);
+		ClienteRepositorio.save(cliente);
 	}
 }
