@@ -3,14 +3,16 @@
 <h1> AutoBots </h1>
 <h3> Sistema para gestão de lojas especializadas em manutenção veicular e vendas de autopeças </h3>
 
-<a href="https://www.eclipse.org/downloads/" target="blank">
-<img src="https://img.shields.io/badge/Eclipse-2C2255?style=for-the-badge&logo=eclipse&logoColor=white" alt="eclipse"/></a> 
+![autobot](https://github.com/Prog-Technique/AutoBots-atv1/assets/100284976/cd20fa03-5183-4443-be88-eff90d435dfa)
 
 <a href="https://www.oracle.com/br/java/technologies/downloads/" target="blank">
-<img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" alt="java"/></a> 
+<img src="https://img.shields.io/badge/Java-000000?style=for-the-badge&logo=java&logoColor=white" alt="java"/></a> 
 
 <a href="https://spring.io/" target="blank">
 <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white" alt="spring"/></a> 
+
+<a href="https://www.eclipse.org/downloads/" target="blank">
+<img src="https://img.shields.io/badge/Eclipse-000000?style=for-the-badge&logo=eclipse&logoColor=white" alt="eclipse"/></a> 
 
 <a href="https://insomnia.rest/" target="blank">
 <img src="https://camo.githubusercontent.com/7dca196dd7adc5004b07ec192b825cd9935af42a2abe7ff06b8aff268643b6b0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f496e736f6d6e69612d3538343962653f7374796c653d666f722d7468652d6261646765266c6f676f3d496e736f6d6e6961266c6f676f436f6c6f723d7768697465" alt="insomnia"/></a> 
