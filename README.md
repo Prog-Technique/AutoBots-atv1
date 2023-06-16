@@ -3,39 +3,6 @@
 <h1> AutoBots </h1>
 <h3> Sistema para gestão de lojas especializadas em manutenção veicular e vendas de autopeças </h3>
 
-<p>
-    <a href="#obj">Objetivo</a> | 
-    <a href="#tec">Tecnologia</a> | 
-    <a href="#diagramas">Diagramas</a> | 
-    <a href="#manual">Manual do usuário</a>
-</p>
-
-</div>
-
-<br>
-
-<span id="obj">
-
-## :mag_right: Objetivo
- Construir uma aplicação que funcione de maneira rápida e com acesso via internet. 
- Além disso, a aplicação deve ser flexível e facilmente integrada a outros sistemas.
- Por isso, optou-se pela arquitetura de micro-serviços, no back-end.
- 
-<br>
-
-> 🔗 **Link** <br>
-> - Documento: [AutoBots](https://github.com/Prog-Technique/AutoBots-atv1/files/11296854/atvi-autobots-micro-servico-java.pdf)
-
-<br>
-
-<span id="tec">
-
-## 🛠️ Tecnologia
-  
-<br>
-
-<div align="center">
-
 <a href="https://www.eclipse.org/downloads/" target="blank">
 <img src="https://img.shields.io/badge/Eclipse-2C2255?style=for-the-badge&logo=eclipse&logoColor=white" alt="eclipse"/></a> 
 
@@ -52,9 +19,19 @@
 
 <br>
 
-<span id="diagramas">
+## :mag_right: Objetivo
+ Construir uma aplicação que funcione de maneira rápida e com acesso via internet. 
+ Além disso, a aplicação deve ser flexível e facilmente integrada a outros sistemas.
+ Por isso, optou-se pela arquitetura de micro-serviços, no back-end.
+ 
+<br>
 
-## :white_medium_square: Diagramas
+> 🔗 **Link** <br>
+> - Documento: [AutoBots](https://github.com/Prog-Technique/AutoBots-atv1/files/11296854/atvi-autobots-micro-servico-java.pdf)
+  
+<br>
+
+## 📰 Diagramas
   
 <div align="center">
   
@@ -63,12 +40,8 @@
 ![diagrama 2](https://user-images.githubusercontent.com/100284976/233676824-7d3228d2-ff50-4b49-90bb-c64c0be2e366.png)
 
 </div>
-
-→ [Voltar ao topo](#topo)
   
 <br>
-
-<span id="manual">
 
 ## :scroll: Manual do Usuário
 
@@ -78,5 +51,13 @@ Clone o repositório pelo link:
 https://github.com/Prog-Technique/AutoBots-atv1.git
 ~~~
 
-e rode o AutomanagerApplication.java
+Rode o AutomanagerApplication.java
+
+Importe o arquivo do Insomnia para o Insomnia
+
+E veja o sistema funcionando.
+
+<br>
+
+→ [Voltar ao topo](#topo)
 
